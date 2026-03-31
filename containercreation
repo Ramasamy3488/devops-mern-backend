@@ -8,6 +8,8 @@ docker run -d \
 
 docker build -t node-crud-app:v1 .
 
+docker build --no-cache -t node-crud-app:v1 .
+
 
 
 
