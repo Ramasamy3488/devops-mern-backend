@@ -6,10 +6,10 @@ docker run -d \
   -p 27017:27017 \
   mongo:latest
 
-docker build -t node-crud-app .
+docker build -t node-crud-app:v1 .
 
 docker run -d \
   --name node-app \
   --network mynetwork \
   -p 5000:5000 \
-  node-crud-app
+  node-crud-app:v1
