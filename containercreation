@@ -1,0 +1,15 @@
+docker network create mynetwork
+
+docker run -d \
+  --name mongo \
+  --network mynetwork \
+  -p 27017:27017 \
+  mongo:latest
+
+docker build -t node-crud-app .
+
+docker run -d \
+  --name node-app \
+  --network mynetwork \
+  -p 5000:5000 \
+  node-crud-app
