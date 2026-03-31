@@ -8,8 +8,12 @@ docker run -d \
 
 docker build -t node-crud-app:v1 .
 
+
+
+
 docker run -d \
   --name node-app \
   --network mynetwork \
   -p 5000:5000 \
+  -e MONGO_URI=mongodb://mongo:27017/employees \
   node-crud-app:v1
