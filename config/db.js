@@ -2,14 +2,23 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
     try {
-        // await mongoose.connect("mongodb://43.204.235.134:27017/employees");
-        await mongoose.connect("mongodb://mongo:27017/employees");
-        // await mongoose.connect("mongodb://localhost:27017/employees");
-        console.log("MongoDB Connected ✅");
+        const conn = await mongoose.connect(process.env.MONGO_URI || "mongodb://mongo:27017/employees", {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+
+        console.log(`MongoDB Connected ✅: ${conn.connection.host}`);
     } catch (error) {
-        console.error("MongoDB Error:", error);
-        process.exit(1);
+        console.error("MongoDB Error ❌:", error.message);
+
+        // Retry after 5 seconds
+        setTimeout(connectDB, 5000);
     }
 };
 
-module.exports = {connectDB};
+module.exports = { connectDB };
+
+
+
+
+ // await mongoose.connect("mongodb://43.204.235.134:27017/employees");
