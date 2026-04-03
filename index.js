@@ -22,7 +22,7 @@ app.use(express.json());
 conn.connectDB();
 
 // Routes
-app.use("/employees", require("./routes/employeeRoutes"));
+app.use("/api/v1/employees", require("./routes/employeeRoutes"));
 
 // Home
 app.get("/", (req, res) => {
