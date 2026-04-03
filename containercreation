@@ -17,5 +17,5 @@ docker run -d \
   --name node-app \
   --network mynetwork \
   -p 5000:5000 \
-  -e MONGO_URI=mongodb://mongo:27017/employees \
+  -e MONGO_URI=mongodb://mongo:27017/employeesDB \
   node-crud-app:v1
